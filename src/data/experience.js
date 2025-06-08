@@ -2,42 +2,73 @@
 export const experienceData = {
   education: [
     {
-      degree: 'Bachelor of Science in Computer Science',
-      institution: 'University of Techville',
+      degree: 'BTech (CSE)',
+      institution: 'Radharaman Institute of Technology and Science, Bhopal',
       period: '2018 - 2022'
     }
   ],
-  
+
   workExperience: [
-    {
+     {
       position: 'Software Engineer',
-      company: 'Tech Innovators Inc.',
-      period: '2022 - Present',
-      description: 'Developing scalable web applications and contributing to innovative software solutions.'
+      company: 'Rapidops Inc.',
+      period: 'July 2022 - Present',
+      description: 'Designed REST APIs, developed scalable backend systems, and enhanced GHG emission calculation tools for the Aquaculture Stewardship Council project.'
     },
     {
-      position: 'Software Engineering Intern',
-      company: 'CodeCrafters LLC',
-      period: 'Summer 2021',
-      description: 'Gained hands-on experience in software development and agile methodologies.'
+      position: 'Internship',
+      company: 'Rapidops Inc.',
+      period: 'January 2022 - June 2022',
+      description: 'Contributed to e-commerce projects, implemented database solutions, and created modular components to improve code maintainability.'
     }
   ],
-  
+
   highlights: [
-    'Developed a scalable e-commerce platform that handled over 10,000 transactions per day.',
-    'Contributed to an open-source project that improved the performance of a popular data processing library by 20%.',
-    'Led a team of developers in building a mobile app that received a 4.8-star rating on the app store.'
+    'Designed and implemented REST APIs, enhancing response times significantly.',
+    'Enhanced GHG emission calculation tools for the Aquaculture Stewardship Council project.',
+    'Developed scalable backend systems for e-commerce, aqua agriculture, and data engineering projects.'
   ]
 };
 
+// Timeline data for Experience page - chronological order (most recent first)
+export const timelineData = [
+  {
+    id: 1,
+    title: 'Software Engineer',
+    organization: 'Rapidops Inc.',
+    period: 'July 2022 - Present',
+    icon: 'BriefcaseIcon',
+    type: 'work',
+    description: 'Designed REST APIs, developed scalable backend systems, and enhanced GHG emission calculation tools for the Aquaculture Stewardship Council project.'
+  },
+  {
+    id: 2,
+    title: 'Software Engineer Intern',
+    organization: 'Rapidops Inc.',
+    period: 'January 2022 - June 2022',
+    icon: 'CodeIcon',
+    type: 'internship',
+    description: 'Contributed to e-commerce projects, implemented database solutions, and created modular components to improve code maintainability.'
+  },
+  {
+    id: 3,
+    title: 'BTech Computer Science Engineering',
+    organization: 'Radharaman Institute of Technology and Science, Bhopal',
+    period: '2018 - 2022',
+    icon: 'GraduationCapIcon',
+    type: 'education',
+    description: 'Completed Bachelor of Technology in Computer Science Engineering with focus on software development, data structures, algorithms, and web technologies.'
+  }
+];
+
 export const personalInfo = {
-  name: 'Sophia',
+  name: 'Sumit Kumar Yadav',
   title: 'Software Engineer',
-  bio: `I'm a software engineer driven by a passion for crafting innovative solutions and turning complex problems into elegant, user-friendly software. My journey in technology began with a fascination for how software could solve real-world challenges, leading me to pursue a degree in Computer Science at the University of Techville. During my studies, I focused on software architecture and data structures, which laid a strong foundation for my career. I've had the opportunity to work on a variety of projects, from developing scalable web applications to contributing to open-source initiatives. My goal is to leverage my skills to create impactful software that makes a difference.`,
+  bio: `Software Engineer with 3+ years of experience in MERN stack development. Skilled in building scalable applications and optimizing APIs for performance and user experience. Passionate about learning new technologies and delivering innovative solutions to support business growth. Strong team player with a focus on problem solving and providing quality results.`,
   
-  skillsOverview: `My expertise spans across various domains, including web development, mobile applications, and cloud computing. I'm proficient in languages like Python, JavaScript, and Java, and I'm always eager to learn new technologies.`,
+  skillsOverview: `Proficient in JavaScript, TypeScript, Node.js, and React.js with experience in database technologies like MongoDB and MySQL. Skilled in building RESTful APIs, GraphQL, and working with Docker for containerization.`,
   
-  personalInterests: `When I'm not coding, I enjoy exploring new hiking trails, playing chess, and experimenting with new recipes in the kitchen. I believe that a balanced approach to life enhances creativity and problem-solving skills, which I bring to my work as a software engineer.`,
+  personalInterests: `When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and staying updated with the latest industry trends. I believe in continuous learning and applying new knowledge to solve real-world problems.`,
   
   profileImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDOaa2DXky9m4PXhxgvwqSso50wJRfWPsyQoJs-1Ea0rxRq4ha5Dl_GZxpC_N3YOHV-MQZATgx6pZ9SLJmnsti-3xgb5JYCMvCMmQpTHQQpx_bg5Osfdo2TVOgKqsvG_WxqjSrC2QtRyyKTZEeHa6wlkQ22fxhjBk2iknGCIPiwt0HE00UOAGDwDwxwKI5QFepMIvyM0NIl4EI0QTTS0dMyT6YSjX1eOlyVYDcQ6O5TdjfD3eN9_hjIDM5LvjtwRMHrTwSEctlo02w'
 };

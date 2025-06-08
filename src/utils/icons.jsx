@@ -62,15 +62,52 @@ const StackOverflowLogo = () => (
   </IconWrapper>
 );
 
+// Timeline Icons for Experience page
+const BriefcaseIcon = () => (
+  <IconWrapper>
+    <path d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z" />
+  </IconWrapper>
+);
+
+const CodeIcon = () => (
+  <IconWrapper>
+    <path d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z" />
+  </IconWrapper>
+);
+
+const GraduationCapIcon = () => (
+  <IconWrapper>
+    <path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z" />
+  </IconWrapper>
+);
+
+// const JavaScriptLogo = () => (
+//   <IconWrapper>
+//     <path d="M128,128h32v48c0,17.7-14.3,32-32,32s-32-14.3-32-32v-8h16v8c0,8.8,7.2,16,16,16s16-7.2,16-16v-32H96v-16h32Zm-32-16V56h16v56Zm112-56H48V208H208V56Zm16-16V224H32V40H224Z" />
+//   </IconWrapper>
+// );
+
+
+// JavaScript Logo
+const JavaScriptLogo = () => (
+  <IconWrapper>
+    <path d="M216,40V216H40V40H216m16-16H24V232H232V24ZM92,176c0,8.84-7.16,16-16,16s-16-7.16-16-16v-8h16v8h0c0,0,0,0,0,0s0,0,0,0h0v-48h16v48Zm80-16c0,17.64-14.36,32-32,32s-32-14.36-32-32v-8h16v8c0,8.82,7.18,16,16,16s16-7.18,16-16v-32h-32v-16h48v48Z" />
+  </IconWrapper>
+);
+
 // Icon mapping object
 const iconMap = {
   CodepenLogo,
   AngularLogo,
   AndroidLogo,
   Plus,
+  JavaScriptLogo,
   CodesandboxLogo,
   GithubLogo,
   StackOverflowLogo,
+  BriefcaseIcon,
+  CodeIcon,
+  GraduationCapIcon,
   DropboxLogo: StackOverflowLogo, // Placeholder
   AmazonLogo: StackOverflowLogo, // Placeholder
   WindowsLogo: StackOverflowLogo, // Placeholder
@@ -83,6 +120,10 @@ const iconMap = {
  * @returns {React.Component} Icon component
  */
 export const getSkillIcon = (iconName) => {
-  const IconComponent = iconMap[iconName] || Plus;
+  const IconComponent = iconMap[iconName];
   return <IconComponent />;
 };
+
+// Export timeline icons for direct use
+export { BriefcaseIcon, CodeIcon, GraduationCapIcon };
+

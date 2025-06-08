@@ -1,47 +1,35 @@
 // Skills data organized by categories
 export const skillsData = {
-  programmingLanguages: [
-    {
-      name: 'Python',
-      icon: 'CodepenLogo'
-    },
+   programmingLanguages: [
     {
       name: 'JavaScript',
-      icon: 'AngularLogo'
+      icon: 'JavaScriptLogo'
     },
     {
-      name: 'Java',
-      icon: 'AndroidLogo'
+      name: 'TypeScript',
+      icon: 'CodepenLogo'
     },
     {
       name: 'C++',
       icon: 'Plus'
-    },
-    {
-      name: 'C#',
-      icon: 'AngularLogo'
     }
   ],
   
   frameworksLibraries: [
     {
-      name: 'React',
-      icon: 'CodesandboxLogo'
-    },
-    {
-      name: 'Angular',
-      icon: 'AngularLogo'
-    },
-    {
-      name: 'Vue.js',
-      icon: 'AngularLogo'
-    },
-    {
       name: 'Node.js',
       icon: 'AngularLogo'
     },
     {
-      name: 'Spring',
+      name: 'React.js',
+      icon: 'CodesandboxLogo'
+    },
+    {
+      name: 'GraphQL',
+      icon: 'AngularLogo'
+    },
+    {
+      name: 'Sequelize ORM',
       icon: 'StackOverflowLogo'
     }
   ],
@@ -56,24 +44,20 @@ export const skillsData = {
       icon: 'DropboxLogo'
     },
     {
-      name: 'Kubernetes',
+      name: 'VS Code',
+      icon: 'CodepenLogo'
+    },
+    {
+      name: 'Postman',
       icon: 'StackOverflowLogo'
     },
     {
-      name: 'AWS',
-      icon: 'AmazonLogo'
-    },
-    {
-      name: 'Azure',
-      icon: 'WindowsLogo'
+      name: 'Jira',
+      icon: 'StackOverflowLogo'
     }
   ],
   
   databases: [
-    {
-      name: 'PostgreSQL',
-      icon: 'StackOverflowLogo'
-    },
     {
       name: 'MongoDB',
       icon: 'StackOverflowLogo'
@@ -83,7 +67,7 @@ export const skillsData = {
       icon: 'StackOverflowLogo'
     },
     {
-      name: 'Redis',
+      name: 'Snowflake',
       icon: 'RedditLogo'
     }
   ]

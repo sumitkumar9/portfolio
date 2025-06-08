@@ -11,7 +11,6 @@ const Header = () => {
   
   // Check if current path is active
   const isActive = (path) => location.pathname === path;
-  console.log(location.pathname);
   
   // Portfolio logo/icon SVG
   const PortfolioIcon = () => (
@@ -36,8 +35,11 @@ const Header = () => {
         <div className="size-4">
           <PortfolioIcon />
         </div>
-        <Link to="/" className="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] hover:text-primary-500 transition-colors">
-          Sophia's Portfolio
+        <Link
+          to="/"
+          className="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] hover:text-primary-500 transition-colors"
+        >
+          Sumit's Portfolio
         </Link>
       </div>
 
@@ -48,7 +50,7 @@ const Header = () => {
           <Link
             to="/about"
             className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive('/about') ? 'text-primary-500' : 'text-[#111518]'
+              isActive("/about") ? "text-primary-500" : "text-[#111518]"
             }`}
           >
             About
@@ -56,7 +58,7 @@ const Header = () => {
           <Link
             to="/skills"
             className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive('/skills') ? 'text-primary-500' : 'text-[#111518]'
+              isActive("/skills") ? "text-primary-500" : "text-[#111518]"
             }`}
           >
             Skills
@@ -64,15 +66,23 @@ const Header = () => {
           <Link
             to="/projects"
             className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive('/projects') ? 'text-primary-500' : 'text-[#111518]'
+              isActive("/projects") ? "text-primary-500" : "text-[#111518]"
             }`}
           >
             Projects
           </Link>
           <Link
+            to="/experience"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
+              isActive("/experience") ? "text-primary-500" : "text-[#111518]"
+            }`}
+          >
+            Experience
+          </Link>
+          <Link
             to="/contact"
             className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive('/contact') ? 'text-primary-500' : 'text-[#111518]'
+              isActive("/contact") ? "text-primary-500" : "text-[#111518]"
             }`}
           >
             Contact
@@ -80,9 +90,11 @@ const Header = () => {
         </nav>
 
         {/* Resume Button */}
-        <Button variant="primary" size="md">
-          Resume
-        </Button>
+        <Link to={"/resume"}>
+          <Button variant="primary" size="md">
+            Resume
+          </Button>
+        </Link>
       </div>
     </header>
   );
