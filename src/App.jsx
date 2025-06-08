@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
+import PageLoader from './components/ui/PageLoader';
+
+// Eagerly load frequently visited pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Skills from './pages/Skills';
-import Projects from './pages/Projects';
-import Contact from './pages/Contact';
+
+// Only lazy load heavier or less frequently visited pages
+const Projects = lazy(() => import('./pages/Projects'));
+const Experience = lazy(() => import('./pages/Experience'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Resume = lazy(() => import('./pages/Resume'));
 
 /**
  * Main App component with routing configuration
@@ -15,22 +22,34 @@ function App() {
   return (
     <Layout>
       <Routes>
-        {/* Home page route */}
+        {/* Eagerly loaded routes */}
         <Route path="/" element={<Home />} />
-        
-        {/* About page route */}
         <Route path="/about" element={<About />} />
-        
-        {/* Skills page route */}
         <Route path="/skills" element={<Skills />} />
         
-        {/* Projects page route */}
-        <Route path="/projects" element={<Projects />} />
+        {/* Lazy-loaded routes */}
+        <Route path="/projects" element={
+          <Suspense fallback={<PageLoader />}>
+            <Projects />
+          </Suspense>
+        } />
+        <Route path="/experience" element={
+          <Suspense fallback={<PageLoader />}>
+            <Experience />
+          </Suspense>
+        } />
+        <Route path="/contact" element={
+          <Suspense fallback={<PageLoader />}>
+            <Contact />
+          </Suspense>
+        } />
+        <Route path="/resume" element={
+          <Suspense fallback={<PageLoader />}>
+            <Resume />
+          </Suspense>
+        } />
         
-        {/* Contact page route */}
-        <Route path="/contact" element={<Contact />} />
-        
-        {/* Fallback route - redirect to home */}
+        {/* Fallback route */}
         <Route path="*" element={<Home />} />
       </Routes>
     </Layout>

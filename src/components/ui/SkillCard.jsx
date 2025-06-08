@@ -8,6 +8,8 @@ import { getSkillIcon } from '../../utils/icons.jsx';
  * @param {string} props.className - Additional CSS classes
  */
 const SkillCard = ({ name, icon, className = '' }) => {
+  const IconComponent = getSkillIcon(icon);
+
   return (
     <div className={`flex flex-1 gap-3 rounded-lg border border-[#dde1e3] bg-white p-4 items-center min-w-[158px] hover:shadow-md transition-shadow ${className}`}>
       {/* Skill Icon */}
