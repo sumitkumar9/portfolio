@@ -1,0 +1,130 @@
+name: Deploy Portfolio to EC2
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+    paths-ignore:
+      - "**/*.md"
+
+env:
+  NODE_VERSION: '22'
+  BUILD_DIR: dist
+  ARCHIVE: portfolio-build.tar.gz
+  REMOTE_APP_DIR: /var/www/html
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run linting
+      run: npm run lint
+
+    - name: Run tests (if available)
+      run: |
+        if npm run | grep -q "test"; then
+          npm test
+        else
+          echo "No tests found, skipping..."
+        fi
+
+    - name: Build application
+      run: npm run build
+
+    - name: Verify build
+      run: |
+        if [ ! -d "${{ env.BUILD_DIR }}" ] || [ ! -f "${{ env.BUILD_DIR }}/index.html" ]; then
+          echo "❌ Build failed"
+          exit 1
+        fi
+        echo "✅ Build successful"
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-files
+        path: ${{ env.BUILD_DIR }}/
+        retention-days: 1
+
+  deploy:
+    needs: test-and-lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: build-files
+        path: ${{ env.BUILD_DIR }}/
+
+    - name: Create deployment archive
+      run: tar -czf ${{ env.ARCHIVE }} ${{ env.BUILD_DIR }}
+
+    - name: Upload to EC2
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: ${{ env.ARCHIVE }}
+        target: ~/deploy/
+
+    - name: Deploy on EC2
+      uses: appleboy/ssh-action@v1.1.0
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          set -e
+
+          # Create backup
+          if [ -d "${{ env.REMOTE_APP_DIR }}" ] && [ "$(ls -A ${{ env.REMOTE_APP_DIR }})" ]; then
+            echo "Creating backup..."
+            sudo cp -r ${{ env.REMOTE_APP_DIR }} ${{ env.REMOTE_APP_DIR }}.backup.$(date +%Y%m%d-%H%M%S)
+          fi
+
+          # Deploy new files
+          mkdir -p ~/deploy/tmp
+          tar -xzf ~/deploy/${{ env.ARCHIVE }} -C ~/deploy/tmp
+          echo "Deploying new build..."
+          sudo rm -rf ${{ env.REMOTE_APP_DIR }}/*
+          sudo cp -r ~/deploy/tmp/${{ env.BUILD_DIR }}/* ${{ env.REMOTE_APP_DIR }}/
+          sudo chown -R www-data:www-data ${{ env.REMOTE_APP_DIR }}
+          sudo chmod -R 755 ${{ env.REMOTE_APP_DIR }}
+
+          # Cleanup
+          rm -rf ~/deploy/tmp
+
+          # Reload Nginx (graceful)
+          sudo systemctl reload nginx
+          echo "✅ Nginx reloaded"
+
+    - name: Health check
+      run: |
+        sleep 15
+        # Try HTTPS first, fallback to HTTP
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://${{ secrets.EC2_HOST }} || curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.EC2_HOST }})
+        if [ $response -eq 200 ]; then
+          echo "🚀 Deployment successful! (HTTP $response)"
+        else
+          echo "❌ Health check failed (HTTP $response)"
+          exit 1
+        fi
