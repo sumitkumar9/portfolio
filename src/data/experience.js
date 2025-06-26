@@ -62,7 +62,7 @@ export const timelineData = [
 ];
 
 export const personalInfo = {
-  name: 'Sumit Kumar Yadav',
+  name: 'Sumit Yadav',
   title: 'Software Engineer',
   bio: `Software Engineer with 3+ years of experience in MERN stack development. Skilled in building scalable applications and optimizing APIs for performance and user experience. Passionate about learning new technologies and delivering innovative solutions to support business growth. Strong team player with a focus on problem solving and providing quality results.`,
   
