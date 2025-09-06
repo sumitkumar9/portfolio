@@ -59,72 +59,72 @@ jobs:
         path: ${{ env.BUILD_DIR }}/
         retention-days: 1
 
-  deploy:
-    needs: test-and-lint
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
+  # deploy:
+  #   needs: test-and-lint
+  #   if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+  #   steps:
+  #   - name: Checkout code
+  #     uses: actions/checkout@v4
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-files
-        path: ${{ env.BUILD_DIR }}/
+  #   - name: Download build artifacts
+  #     uses: actions/download-artifact@v4
+  #     with:
+  #       name: build-files
+  #       path: ${{ env.BUILD_DIR }}/
 
-    - name: Create deployment archive
-      run: tar -czf ${{ env.ARCHIVE }} ${{ env.BUILD_DIR }}
+  #   - name: Create deployment archive
+  #     run: tar -czf ${{ env.ARCHIVE }} ${{ env.BUILD_DIR }}
 
-    - name: Upload to EC2
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        source: ${{ env.ARCHIVE }}
-        target: ~/deploy/
+  #   - name: Upload to EC2
+  #     uses: appleboy/scp-action@v0.1.7
+  #     with:
+  #       host: ${{ secrets.EC2_HOST }}
+  #       username: ${{ secrets.EC2_USER }}
+  #       key: ${{ secrets.EC2_SSH_KEY }}
+  #       source: ${{ env.ARCHIVE }}
+  #       target: ~/deploy/
 
-    - name: Deploy on EC2
-      uses: appleboy/ssh-action@v1.1.0
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          set -e
+  #   - name: Deploy on EC2
+  #     uses: appleboy/ssh-action@v1.1.0
+  #     with:
+  #       host: ${{ secrets.EC2_HOST }}
+  #       username: ${{ secrets.EC2_USER }}
+  #       key: ${{ secrets.EC2_SSH_KEY }}
+  #       script: |
+  #         set -e
 
-          # Create backup
-          if [ -d "${{ env.REMOTE_APP_DIR }}" ] && [ "$(ls -A ${{ env.REMOTE_APP_DIR }})" ]; then
-            echo "Creating backup..."
-            sudo cp -r ${{ env.REMOTE_APP_DIR }} ${{ env.REMOTE_APP_DIR }}.backup.$(date +%Y%m%d-%H%M%S)
-          fi
+  #         # Create backup
+  #         if [ -d "${{ env.REMOTE_APP_DIR }}" ] && [ "$(ls -A ${{ env.REMOTE_APP_DIR }})" ]; then
+  #           echo "Creating backup..."
+  #           sudo cp -r ${{ env.REMOTE_APP_DIR }} ${{ env.REMOTE_APP_DIR }}.backup.$(date +%Y%m%d-%H%M%S)
+  #         fi
 
-          # Deploy new files
-          mkdir -p ~/deploy/tmp
-          tar -xzf ~/deploy/${{ env.ARCHIVE }} -C ~/deploy/tmp
-          echo "Deploying new build..."
-          sudo rm -rf ${{ env.REMOTE_APP_DIR }}/*
-          sudo cp -r ~/deploy/tmp/${{ env.BUILD_DIR }}/* ${{ env.REMOTE_APP_DIR }}/
-          sudo chown -R www-data:www-data ${{ env.REMOTE_APP_DIR }}
-          sudo chmod -R 755 ${{ env.REMOTE_APP_DIR }}
+  #         # Deploy new files
+  #         mkdir -p ~/deploy/tmp
+  #         tar -xzf ~/deploy/${{ env.ARCHIVE }} -C ~/deploy/tmp
+  #         echo "Deploying new build..."
+  #         sudo rm -rf ${{ env.REMOTE_APP_DIR }}/*
+  #         sudo cp -r ~/deploy/tmp/${{ env.BUILD_DIR }}/* ${{ env.REMOTE_APP_DIR }}/
+  #         sudo chown -R www-data:www-data ${{ env.REMOTE_APP_DIR }}
+  #         sudo chmod -R 755 ${{ env.REMOTE_APP_DIR }}
 
-          # Cleanup
-          rm -rf ~/deploy/tmp
+  #         # Cleanup
+  #         rm -rf ~/deploy/tmp
 
-          # Reload Nginx (graceful)
-          sudo systemctl reload nginx
-          echo "✅ Nginx reloaded"
+  #         # Reload Nginx (graceful)
+  #         sudo systemctl reload nginx
+  #         echo "✅ Nginx reloaded"
 
-    - name: Health check
-      run: |
-        sleep 15
-        # Try HTTPS first, fallback to HTTP
-        response=$(curl -s -o /dev/null -w "%{http_code}" https://${{ secrets.EC2_HOST }} || curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.EC2_HOST }})
-        if [ $response -eq 200 ]; then
-          echo "🚀 Deployment successful! (HTTP $response)"
-        else
-          echo "❌ Health check failed (HTTP $response)"
-          exit 1
-        fi
+  #   - name: Health check
+  #     run: |
+  #       sleep 15
+  #       # Try HTTPS first, fallback to HTTP
+  #       response=$(curl -s -o /dev/null -w "%{http_code}" https://${{ secrets.EC2_HOST }} || curl -s -o /dev/null -w "%{http_code}" http://${{ secrets.EC2_HOST }})
+  #       if [ $response -eq 200 ]; then
+  #         echo "🚀 Deployment successful! (HTTP $response)"
+  #       else
+  #         echo "❌ Health check failed (HTTP $response)"
+  #         exit 1
+  #       fi
