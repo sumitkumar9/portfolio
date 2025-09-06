@@ -17,25 +17,25 @@ const ExperienceCard = ({
   className = '' 
 }) => {
   return (
-    <div className={`flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 ${className}`}>
+    <div className={`flex items-center gap-4 bg-dark-accent border border-gray-600 rounded-lg px-4 min-h-[72px] py-2 hover:bg-dark-secondary transition-colors ${className}`}>
       <div className="flex flex-col justify-center flex-1">
         {/* Title/Position */}
         <h3 className="text-text-primary text-base font-medium leading-normal line-clamp-1">
           {title}
         </h3>
-        
+
         {/* Organization */}
         <p className="text-text-secondary text-sm font-normal leading-normal line-clamp-2">
           {organization}
         </p>
-        
+
         {/* Period */}
         {period && (
           <p className="text-text-muted text-xs font-normal leading-normal mt-1">
             {period}
           </p>
         )}
-        
+
         {/* Description */}
         {description && (
           <p className="text-text-primary text-sm font-normal leading-normal mt-2">

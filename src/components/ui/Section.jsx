@@ -14,12 +14,12 @@ const Section = ({ title, subtitle, children, className = "", id }) => {
       {(title || subtitle) && (
         <div className="flex flex-wrap justify-between gap-3 p-4">
           {title && (
-            <p className="text-[#121416] tracking-tight text-[32px] font-bold leading-tight">
+            <p className="text-text-primary tracking-tight text-[32px] font-bold leading-tight">
               {title}
             </p>
           )}
           {subtitle && (
-            <p className="text-[#6a7681] text-sm font-normal leading-normal">
+            <p className="text-text-muted text-sm font-normal leading-normal">
               {subtitle}
             </p>
           )}

@@ -25,7 +25,7 @@ const Footer = () => {
   );
   
   return (
-    <footer className="flex justify-center bg-white">
+    <footer className="flex justify-center bg-dark-primary border-t border-gray-700">
       <div className="flex max-w-[960px] flex-1 flex-col">
         <footer className="flex flex-col gap-6 px-5 py-10 text-center @container">
           {/* Social Media Links */}
@@ -34,7 +34,7 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#60768a] hover:text-primary-500 transition-colors"
+              className="text-text-muted hover:text-accent-500 transition-colors"
               aria-label="Twitter Profile"
             >
               <TwitterIcon />
@@ -43,7 +43,7 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#60768a] hover:text-primary-500 transition-colors"
+              className="text-text-muted hover:text-accent-500 transition-colors"
               aria-label="LinkedIn Profile"
             >
               <LinkedInIcon />
@@ -52,7 +52,7 @@ const Footer = () => {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#60768a] hover:text-primary-500 transition-colors"
+              className="text-text-muted hover:text-accent-500 transition-colors"
               aria-label="GitHub Profile"
             >
               <GitHubIcon />
@@ -60,8 +60,8 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <p className="text-[#60768a] text-base font-normal leading-normal">
-            © {new Date().getFullYear()} Sumit's Portfolio. All rights reserved.
+          <p className="text-text-muted text-base font-normal leading-normal">
+            © {new Date().getFullYear()} Sumit Yadav. All rights reserved.
           </p>
         </footer>
       </div>

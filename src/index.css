@@ -2,14 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth scrolling and performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Micro-animations and transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #f97316;
 }
 
 /* body {
@@ -32,61 +82,83 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #2d3548;
+  color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #f97316;
+  background-color: #374151;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+/* Removed light theme media query to ensure consistent dark theme */
 
 /* Custom base styles */
 @layer base {
   html {
     font-family: 'Manrope', 'Noto Sans', sans-serif;
   }
-  
+
   body {
-    @apply bg-white text-text-primary;
+    @apply bg-dark-primary text-text-primary;
+  }
+
+  /* Ensure smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 }
 
 /* Custom component styles */
 @layer components {
   .btn-primary {
-    @apply flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-primary-500 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-600 transition-colors;
+    @apply flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-accent-500 text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-accent-600 transition-colors;
   }
-  
+
   .btn-secondary {
-    @apply flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-gray-100 text-text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200 transition-colors;
+    @apply flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-dark-accent text-text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-dark-secondary transition-colors;
   }
-  
+
   .section-title {
     @apply text-text-primary tracking-tight text-[32px] font-bold leading-tight;
   }
-  
+
   .section-subtitle {
     @apply text-text-muted text-sm font-normal leading-normal;
   }
-  
+
   .card {
-    @apply rounded-lg border border-gray-200 bg-white p-4 shadow-sm hover:shadow-md transition-shadow;
+    @apply rounded-lg border border-gray-600 bg-dark-accent p-4 shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  /* Hero section styles for the new design */
+  .hero-greeting {
+    @apply text-text-primary text-4xl md:text-6xl font-bold tracking-tight;
+  }
+
+  .hero-name {
+    @apply text-text-primary text-2xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .hero-title {
+    @apply text-text-primary text-xl md:text-2xl font-semibold tracking-tight;
+  }
+
+  /* Profile image with orange accent circle */
+  .profile-image-container {
+    @apply relative inline-block;
+  }
+
+  .profile-image-accent {
+    @apply absolute inset-0 rounded-full bg-accent-500 opacity-20;
+  }
+
+  .profile-image {
+    @apply relative z-10 rounded-full object-cover;
   }
 }

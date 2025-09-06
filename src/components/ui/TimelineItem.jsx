@@ -34,24 +34,24 @@ const TimelineItem = ({
     <>
       {/* Timeline Icon Column */}
       <div className="flex flex-col items-center gap-1 pt-3">
-        <div className="text-[#121416]">
+        <div className="text-accent-500">
           <IconComponent />
         </div>
         {!isLast && (
-          <div className="w-[1.5px] bg-[#dde1e3] h-2 grow"></div>
+          <div className="w-[1.5px] bg-gray-600 h-2 grow"></div>
         )}
       </div>
 
       {/* Timeline Content Column */}
       <div className={`flex flex-1 flex-col py-3 ${className}`}>
-        <h3 className="text-[#121416] text-base font-medium leading-normal">
+        <h3 className="text-text-primary text-base font-medium leading-normal">
           {title} {organization && `at ${organization}`}
         </h3>
-        <p className="text-[#6a7681] text-base font-normal leading-normal mb-2">
+        <p className="text-text-secondary text-base font-normal leading-normal mb-2">
           {period}
         </p>
         {description && (
-          <p className="text-[#6a7681] text-sm font-normal leading-normal">
+          <p className="text-text-muted text-sm font-normal leading-normal">
             {description}
           </p>
         )}
