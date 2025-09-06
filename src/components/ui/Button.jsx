@@ -26,8 +26,8 @@ const Button = ({
   
   // Variant styles
   const variantStyles = {
-    primary: 'bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500',
-    secondary: 'bg-gray-100 text-text-primary hover:bg-gray-200 focus:ring-gray-500'
+    primary: 'bg-accent-500 text-white hover:bg-accent-600 focus:ring-accent-500',
+    secondary: 'bg-dark-accent text-text-primary hover:bg-dark-secondary focus:ring-accent-500 border border-gray-600'
   };
   
   // Size styles

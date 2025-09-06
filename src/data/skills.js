@@ -1,74 +1,104 @@
-// Skills data organized by categories
+// Skills data organized by categories with proficiency levels
 export const skillsData = {
    programmingLanguages: [
     {
       name: 'JavaScript',
-      icon: 'JavaScriptLogo'
+      icon: 'JavaScriptLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'TypeScript',
-      icon: 'CodepenLogo'
+      icon: 'CodepenLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'C++',
-      icon: 'Plus'
+      icon: 'Plus',
+      level: 'Intermediate',
+      years: 2
     }
   ],
-  
+
   frameworksLibraries: [
     {
       name: 'Node.js',
-      icon: 'AngularLogo'
+      icon: 'AngularLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'React.js',
-      icon: 'CodesandboxLogo'
+      icon: 'CodesandboxLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'GraphQL',
-      icon: 'AngularLogo'
+      icon: 'AngularLogo',
+      level: 'Advanced',
+      years: 2
     },
     {
       name: 'Sequelize ORM',
-      icon: 'StackOverflowLogo'
+      icon: 'StackOverflowLogo',
+      level: 'Advanced',
+      years: 2
     }
   ],
-  
+
   toolsTechnologies: [
     {
       name: 'Git',
-      icon: 'GithubLogo'
+      icon: 'GithubLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'Docker',
-      icon: 'DropboxLogo'
+      icon: 'DropboxLogo',
+      level: 'Advanced',
+      years: 2
     },
     {
       name: 'VS Code',
-      icon: 'CodepenLogo'
+      icon: 'CodepenLogo',
+      level: 'Expert',
+      years: 3
     },
     {
       name: 'Postman',
-      icon: 'StackOverflowLogo'
+      icon: 'StackOverflowLogo',
+      level: 'Advanced',
+      years: 3
     },
     {
       name: 'Jira',
-      icon: 'StackOverflowLogo'
+      icon: 'StackOverflowLogo',
+      level: 'Advanced',
+      years: 2
     }
   ],
-  
+
   databases: [
     {
       name: 'MongoDB',
-      icon: 'StackOverflowLogo'
+      icon: 'StackOverflowLogo',
+      level: 'Advanced',
+      years: 2
     },
     {
       name: 'MySQL',
-      icon: 'StackOverflowLogo'
+      icon: 'StackOverflowLogo',
+      level: 'Advanced',
+      years: 2
     },
     {
       name: 'Snowflake',
-      icon: 'RedditLogo'
+      icon: 'RedditLogo',
+      level: 'Intermediate',
+      years: 1
     }
   ]
 };

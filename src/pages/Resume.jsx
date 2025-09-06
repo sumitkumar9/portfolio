@@ -38,7 +38,7 @@ const Resume = () => {
         </div>
         
         {/* PDF Embed */}
-        <div className="w-full h-[800px] border border-gray-200 rounded-lg overflow-hidden">
+        <div className="w-full h-[800px] border border-gray-600 rounded-lg overflow-hidden">
           <iframe 
             src={resumePdfUrl}
             className="w-full h-full"

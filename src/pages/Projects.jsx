@@ -25,20 +25,20 @@ const ProjectCard = ({ project }) => {
       
       {/* Project Content */}
       <div className="space-y-3">
-        <h3 className="text-[#121416] text-xl font-bold leading-tight">
+        <h3 className="text-text-primary text-xl font-bold leading-tight">
           {project.title}
         </h3>
 
-        <p className="text-[#6a7681] text-sm leading-relaxed">
+        <p className="text-text-muted text-sm leading-relaxed">
           {project.description}
         </p>
-        
+
         {/* Technologies */}
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-gray-100 text-[#121416] text-xs rounded-full font-medium"
+              className="px-2 py-1 bg-dark-accent text-text-primary text-xs rounded-full font-medium border border-gray-600"
             >
               {tech}
             </span>
@@ -86,7 +86,7 @@ const Projects = () => {
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (
         <Section>
-          <h3 className="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] pb-6 pt-4">
+          <h3 className="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] pb-6 pt-4">
             Featured Projects
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -100,7 +100,7 @@ const Projects = () => {
       {/* Other Projects */}
       {otherProjects.length > 0 && (
         <Section>
-          <h3 className="text-[#121416] text-lg font-bold leading-tight tracking-[-0.015em] pb-6 pt-4">
+          <h3 className="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] pb-6 pt-4">
             Other Projects
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -114,10 +114,10 @@ const Projects = () => {
       {/* Call to Action */}
       <Section>
         <div className="text-center py-8">
-          <h3 className="text-[#121416] text-xl font-bold mb-4">
+          <h3 className="text-text-primary text-xl font-bold mb-4">
             Interested in working together?
           </h3>
-          <p className="text-[#6a7681] mb-6">
+          <p className="text-text-muted mb-6">
             I'm always open to discussing new opportunities and interesting projects.
           </p>
           <Button variant="primary" size="lg">

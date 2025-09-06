@@ -64,7 +64,7 @@ export const timelineData = [
 export const personalInfo = {
   name: 'Sumit Yadav',
   title: 'Software Engineer',
-  bio: `Software Engineer with 3+ years of experience in MERN stack development. Skilled in building scalable applications and optimizing APIs for performance and user experience. Passionate about learning new technologies and delivering innovative solutions to support business growth. Strong team player with a focus on problem solving and providing quality results.`,
+  bio: `Software Engineer with 3+ years of experience in MERN stack development at Rapidops Inc. Led development of GHG emission calculation tools serving 500+ aquaculture farms and optimized API response times by 40%. Contributed to 3 major enterprise projects including ASC, Incident Analysis, and TOQ systems. Passionate about delivering scalable solutions and mentoring junior developers.`,
   
   skillsOverview: `Proficient in JavaScript, TypeScript, Node.js, and React.js with experience in database technologies like MongoDB and MySQL. Skilled in building RESTful APIs, GraphQL, and working with Docker for containerization.`,
   

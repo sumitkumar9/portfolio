@@ -29,17 +29,17 @@ const Header = () => {
   );
   
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f2f5] px-10 py-3 bg-white sticky top-0 z-50">
+    <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-700 px-10 py-3 bg-dark-primary sticky top-0 z-50">
       {/* Logo and Brand */}
-      <div className="flex items-center gap-4 text-[#111518]">
+      <div className="flex items-center gap-4 text-text-primary">
         <div className="size-4">
           <PortfolioIcon />
         </div>
         <Link
           to="/"
-          className="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] hover:text-primary-500 transition-colors"
+          className="text-text-primary text-lg font-bold leading-tight tracking-[-0.015em] hover:text-accent-500 transition-colors"
         >
-          Sumit's Portfolio
+          Sumit Yadav
         </Link>
       </div>
 
@@ -49,43 +49,43 @@ const Header = () => {
         <nav className="flex items-center gap-9">
           <Link
             to="/about"
-            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive("/about") ? "text-primary-500" : "text-[#111518]"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-accent-500 ${
+              isActive("/about") ? "text-accent-500" : "text-text-primary"
             }`}
           >
             About
           </Link>
           <Link
             to="/skills"
-            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive("/skills") ? "text-primary-500" : "text-[#111518]"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-accent-500 ${
+              isActive("/skills") ? "text-accent-500" : "text-text-primary"
             }`}
           >
             Skills
           </Link>
           <Link
             to="/projects"
-            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive("/projects") ? "text-primary-500" : "text-[#111518]"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-accent-500 ${
+              isActive("/projects") ? "text-accent-500" : "text-text-primary"
             }`}
           >
             Projects
           </Link>
           <Link
             to="/experience"
-            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive("/experience") ? "text-primary-500" : "text-[#111518]"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-accent-500 ${
+              isActive("/experience") ? "text-accent-500" : "text-text-primary"
             }`}
           >
             Experience
           </Link>
           <Link
             to="/contact"
-            className={`text-sm font-medium leading-normal transition-colors hover:text-primary-500 ${
-              isActive("/contact") ? "text-primary-500" : "text-[#111518]"
+            className={`text-sm font-medium leading-normal transition-colors hover:text-accent-500 ${
+              isActive("/contact") ? "text-accent-500" : "text-text-primary"
             }`}
           >
-            Contact
+            Contacts
           </Link>
         </nav>
 
